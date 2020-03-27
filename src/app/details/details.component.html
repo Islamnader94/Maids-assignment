@@ -1,0 +1,23 @@
+<h1> {{value.first_name}}'s details</h1>
+
+<div>
+    <button mat-button selected [routerLink]="['/']">Back</button>
+</div>
+<br><br>
+
+<mat-expansion-panel (opened)="panelOpenState = true"
+                     (closed)="panelOpenState = false">
+<mat-expansion-panel-header>
+    <mat-panel-title>
+      Full Name: {{value.first_name}} {{value.last_name}}
+    </mat-panel-title>
+    <mat-panel-description>
+      User's ID: {{value.id}}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <img [src]="value.avatar">
+  <p>First Name: {{value.first_name}}</p>
+  <p>Last Name: {{value.last_name}}</p>
+  <p>Email: {{value.email}}</p>
+</mat-expansion-panel>
+
