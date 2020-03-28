@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
 
   users;
   showSpinner = false;
+  searchedList : any;
 
   constructor(
     private data: DataService,
@@ -37,11 +38,13 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/details/'] , { state: { value: user } });
   }
 
-  applyFilter(filtervalue: string) {
-    this.users.forEach(element => {
-      if (element.id == filtervalue){
-        this.users.filter = filtervalue.trim().toLocaleLowerCase();
-      }
-    });
+  search(value) {
+    if ( value != '') {
+      this.users = this.users.filter(val=>{
+        return String(val['id']).match(value);
+      });
+    } else {
+      this.ngOnInit();
+    }
   }
 }
